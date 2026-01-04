@@ -40,6 +40,17 @@ namespace Inventory_Management_System.Data
             item.IsCompleted = !item.IsCompleted;
             await _database!.UpdateAsync(item);
         }
-       
+
+        public async Task<List<DutiesItem>> GetRecentlyCompletedOrNotCompletedAsync()
+        {
+            await InitAsync();
+            return await _database!
+                .Table<DutiesItem>()
+                .Where(item => (!item.IsCompleted) || (item.IsCompleted && item.DueDate.AddDays(-1) < DateTime.Now))
+                .OrderByDescending(item => item.DueDate)
+                .ToListAsync();
+
+        }
+
     }
 }
