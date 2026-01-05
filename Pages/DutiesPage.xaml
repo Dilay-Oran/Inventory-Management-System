@@ -12,7 +12,7 @@
                     <Label Text="Due Date :" VerticalOptions="Center"></Label>
                     <DatePicker x:Name="DueDate" VerticalOptions="Center" ></DatePicker>
                 </HorizontalStackLayout>
-                <Button x:Name="SaveButton" Text="Save" BackgroundColor="Green" Clicked="SaveButton_OnClicked"></Button>
+                <Button x:Name="SaveButton" Text="Save" BackgroundColor="Green" Clicked="SaveButton_OnClicked" ></Button>
 
 
             </VerticalStackLayout>
@@ -24,12 +24,14 @@
             <ListView.ItemTemplate> <!-- her bir satırın nasıl görüneceği -->
                 <DataTemplate> <!--tek bir veri nesnesinin UI karşılığı (şablonu kurmak için ) -->
                     <ViewCell> <!-- tek bir satırı temsil eder -->
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Title}"       
-                                  />
+                        <StackLayout Orientation="Horizontal" Padding="15,10" Spacing="10">
+
+                            <Label Text="{Binding Title}" HorizontalOptions="StartAndExpand" />
+                            
                             <Label 
                                Text="{Binding DueDate, StringFormat=' (Due: {0:dd/MM})'}"
                                VerticalOptions="Center"/>
+                            
                             <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCompleted}" IsEnabled="False" ></CheckBox>
 
                         </StackLayout>
