@@ -18,14 +18,7 @@ public partial class DutiesPage : ContentPage
 
 
         }
-        private async void AddButton_OnClicked(object? sender, EventArgs e)
-        {
-            //FakeDb.AddToDo(Title.Text, DueDate.Date);
-            await dutiesdb.CreateAsync(Duty.Text, DueDate.Date);
-            Duty.Text = string.Empty;
-            DueDate.Date=DateTime.Now;
-            await RefreshListView();
-        }
+     
         private async void SaveButton_OnClicked(object? sender, EventArgs e)
         {
             await dutiesdb.CreateAsync(Duty.Text, DueDate.Date);

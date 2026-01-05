@@ -7,7 +7,7 @@
     <VerticalStackLayout Padding="20" Margin="20">
 
         <Border Margin="10" >
-            <VerticalStackLayout Margin="10" Padding="10">
+            <VerticalStackLayout Margin="10" Padding="10" Spacing="10">
                 <Entry x:Name="Destination" Placeholder="Enter a destination" />
                 <Entry x:Name="Capacity" Placeholder="Enter a capacity"/>
                 <Button x:Name="SaveButton" Text="Save" BackgroundColor="Blue"  ></Button>
@@ -20,11 +20,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="15,10"  Spacing="10">
+                        <StackLayout Orientation="Horizontal" Padding="15"  Spacing="10">
                             
-                            <Label Text="{Binding WarehouseId}" HorizontalOptions="StartAndExpand" />
+                            <Label Text="{Binding WarehouseId}"  HorizontalOptions="StartAndExpand" />
                             <Label Text="{Binding Destination }" HorizontalOptions="StartAndExpand" />
-                            <Label Text="{Binding Capaciity }" HorizontalOptions="StartAndExpand" />
+                            <Label Text="{Binding Capaciity }"   HorizontalOptions="StartAndExpand" />
                             <Label 
                                Text="{Binding DueDate, StringFormat=' (Due: {0:dd/MM})'}"
                                VerticalOptions="Center"/>
