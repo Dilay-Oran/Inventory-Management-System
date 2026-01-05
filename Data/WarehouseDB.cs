@@ -27,14 +27,13 @@ namespace Inventory_Management_System.Data
             await _database!.InsertAsync(item);
         }
 
-        public async Task CreateAsync( int WarehouseIddb,string Destinationdb,int Capacitydb)
+        public async Task CreateAsync(string destination,int capacity)
         {
 
             var item = new WarehouseItem
             {
-            WarehouseCapacity = Capacitydb,
-            WarehouseDestination = Destinationdb,
-            WarehouseId = WarehouseIddb
+            WarehouseCapacity = capacity,
+            WarehouseDestination = destination,
             };
             await CreateAsync(item);
         }
