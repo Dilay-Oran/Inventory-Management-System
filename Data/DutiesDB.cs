@@ -44,7 +44,6 @@ namespace Inventory_Management_System.Data
         public async Task CompletionStatusAsync(DutiesItem item)
         {
             await InitAsync();
-            //item.IsCompleted = !item.IsCompleted;
             await _database!.UpdateAsync(item);
         }
         public async Task<List<DutiesItem>> GetAllAsync()
