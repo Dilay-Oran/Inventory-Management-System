@@ -14,8 +14,8 @@ namespace Inventory_Management_System.Models
         public string Name { get; set; } = string.Empty;
         public DateTime CreationDate { get; set; }
         public int Quantity { get; set; }
-        public int ProductId { get; set; }
-        public int WarehouseId { get; set; }
+        public int ProductId { get; set; } //fk
+        public int WarehouseId { get; set; } //fk
 
     }
 }

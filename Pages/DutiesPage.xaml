@@ -31,8 +31,8 @@
                             <Label 
                                Text="{Binding DueDate, StringFormat=' (Due: {0:dd/MM})'}"
                                VerticalOptions="Center"/>
-                            
-                            <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCompleted}" IsEnabled="False" ></CheckBox>
+
+                            <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCompleted}" IsEnabled="True" CheckedChanged="CheckBox_OnClicked"></CheckBox>
 
                         </StackLayout>
                     </ViewCell>
