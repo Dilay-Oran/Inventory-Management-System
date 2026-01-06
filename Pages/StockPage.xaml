@@ -4,9 +4,9 @@
              x:Class="Inventory_Management_System.Pages.StockPage"
              Title="Stock">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        
+        
+        
+        
     </VerticalStackLayout>
 </ContentPage>

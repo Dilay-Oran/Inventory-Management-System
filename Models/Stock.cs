@@ -7,15 +7,14 @@ using SQLite;
 
 namespace Inventory_Management_System.Models
 {
-    internal class StockItem
+    public class StockItem
     {
         [PrimaryKey,AutoIncrement]
         public int StockId { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; } = DateTime.Now;
         public int Quantity { get; set; }
-        public int ProductId { get; set; } //fk
         public int WarehouseId { get; set; } //fk
+        public string ProductsName { get; set; } = string.Empty; //fk
 
     }
 }

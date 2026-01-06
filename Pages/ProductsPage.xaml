@@ -9,7 +9,7 @@
         <Border Margin="10" >
             <VerticalStackLayout Margin="10" Padding="10" Spacing="10">
                 <Entry x:Name="ProductName" Placeholder="Enter the product name" />
-                <Button x:Name="SaveButton" Text="Save" BackgroundColor="Blue" Clicked="SaveButton_OnClicked"></Button>
+                <Button x:Name="SaveButton" Text="Save" Clicked="SaveButton_OnClicked"></Button>
             </VerticalStackLayout>
         </Border>
 

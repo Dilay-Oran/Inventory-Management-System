@@ -49,7 +49,6 @@ public partial class WarehousePage : ContentPage
         var button = (Button)sender;
         var item = (WarehouseItem)button.CommandParameter;
         await warehousedb.DeleteAsync(item);
-        await warehousedb.DeleteAsync(item);
         await RefreshListView();
     }
 
