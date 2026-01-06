@@ -8,7 +8,7 @@ using Inventory_Management_System.Models;
 
 namespace Inventory_Management_System.Data
 {
-    public class WarehouseDB
+    public class ProductsDB
     {
         private SQLiteAsyncConnection? _database;
 
@@ -16,37 +16,36 @@ namespace Inventory_Management_System.Data
         {
             if (_database is not null)
                 return;
-            var DbPath = Path.Combine(FileSystem.AppDataDirectory, "warehouse.db3");
+            var DbPath = Path.Combine(FileSystem.AppDataDirectory, "products.db3");
             _database = new SQLiteAsyncConnection(DbPath);
-            await _database.CreateTableAsync<WarehouseItem>();
+            await _database.CreateTableAsync<ProductsItem>();
         }
 
-        public async Task CreateAsync(WarehouseItem item)
+        public async Task CreateAsync(ProductsItem item)
         {
             await InitAsync();
             await _database!.InsertAsync(item);
         }
 
-        public async Task CreateAsync(string destination,int capacity)
+        public async Task CreateAsync(int productsid , string productsname)
         {
 
-            var item = new WarehouseItem
+            var item = new ProductsItem
             {
-            WarehouseCapacity = capacity,
-            WarehouseDestination = destination,
+                ProductsName = productsname,
             };
             await CreateAsync(item);
         }
 
-        public async Task <List<WarehouseItem>> GetAllAsync()
+        public async Task<List<ProductsItem>> GetAllAsync()
         {
             await InitAsync();
             return await _database!
-            .Table<WarehouseItem>()
-            .OrderBy(item => item.WarehouseId) 
+            .Table<ProductsItem>()
+            .OrderBy(item => item.ProductsId)
             .ToListAsync();
         }
-        public async Task DeleteAsync(WarehouseItem item)
+        public async Task DeleteAsync(ProductsItem  item)
         {
             await InitAsync();
             await _database!.DeleteAsync(item);

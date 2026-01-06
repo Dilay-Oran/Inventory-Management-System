@@ -14,9 +14,7 @@ public partial class DutiesPage : ContentPage
             InitializeComponent();
     
             RefreshListView();
-            ;
-
-
+            
         }
      
         private async void SaveButton_OnClicked(object? sender, EventArgs e)

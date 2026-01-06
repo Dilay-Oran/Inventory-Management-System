@@ -10,8 +10,8 @@ namespace Inventory_Management_System.Models
     public class ProductsItem
     {
         [PrimaryKey, AutoIncrement]
-        public int ProductId { get; set; }
-        public string ProductName { get; set; } = string.Empty;
+        public int ProductsId { get; set; }
+        public string ProductsName { get; set; } = string.Empty;
     }
 
 }
