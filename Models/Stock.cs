@@ -13,7 +13,7 @@ namespace Inventory_Management_System.Models
         public int StockId { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
         public int Quantity { get; set; }
-        public int WarehouseId { get; set; } //fk
+        public string WarehouseDestination { get; set; } //fk
         public string ProductsName { get; set; } = string.Empty; //fk
 
     }

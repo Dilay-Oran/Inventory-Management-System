@@ -8,7 +8,7 @@ using SQLite;
 
 namespace Inventory_Management_System.Data
 {
-    class StockDB
+    public class StockDB
     {
         private SQLiteAsyncConnection? _database;
 
@@ -27,12 +27,12 @@ namespace Inventory_Management_System.Data
             await _database!.InsertAsync(item);
         }
 
-        public async Task CreateAsync(string productsname, int warehouseId, int quantity)
+        public async Task CreateAsync(string productsname, string warehousedestination, int quantity)
         {
             var item = new StockItem
             {
                 ProductsName = productsname,
-                WarehouseId = warehouseId,
+                WarehouseDestination = warehousedestination,
                 Quantity = quantity,
                 CreationDate = DateTime.Now
             };
