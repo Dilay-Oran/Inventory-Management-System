@@ -19,15 +19,6 @@
             <Label 
         Text="In this section, you can add new products to the system, update existing products, or delete them. Each product is associated with a specific warehouse to enable accurate stock tracking."
         FontSize="15"/>
-            
-            <Label 
-        Text="Stock Page"
-        FontSize="20"
-        FontAttributes="Bold"/>
-
-            <Label 
-        Text="This page allows you to view stock levels for each product across different warehouses. You can manage stock movements by recording stock-in and stock-out transactions to keep inventory data up to date."
-        FontSize="15"/>
 
             <Label 
         Text="Warehouse Page"
@@ -37,6 +28,16 @@
             <Label 
         Text="In this section, you can define, edit, or remove warehouses from the system. Each warehouse is managed separately to ensure organized product and stock management."
         FontSize="15"/>
+
+            <Label 
+        Text="Stock Page"
+        FontSize="20"
+        FontAttributes="Bold"/>
+
+            <Label 
+        Text="This page allows you to view stock levels for each product across different warehouses. You can manage stock movements by recording stock-in and stock-out transactions to keep inventory data up to date."
+        FontSize="15"/>
+
 
             <Label 
         Text="Duties Page"
