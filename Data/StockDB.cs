@@ -49,5 +49,10 @@ namespace Inventory_Management_System.Data
             .OrderBy(item => item.CreationDate)
             .ToListAsync();
         }
+        public async Task DeleteAsync(StockItem item)
+        {
+            await InitAsync();
+            await _database!.DeleteAsync(item);
+        }
     }
 }

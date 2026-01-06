@@ -66,7 +66,12 @@ public partial class StockPage : ContentPage
         StockListView.ItemsSource = null;
         StockListView.ItemsSource = await stockdb.GetAllAsync();
     }
+    private async void DeleteButton_OnClicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var item = button.CommandParameter as StockItem;
 
-
-
+        await stockdb.DeleteAsync(item);
+        await LoadStockList();
+    }
 }
