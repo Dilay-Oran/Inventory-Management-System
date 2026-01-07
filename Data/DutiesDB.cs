@@ -57,7 +57,7 @@ namespace Inventory_Management_System.Data
             await InitAsync();
             return await _database!
                 .Table<DutiesItem>()
-                .Where(item => !item.IsCompleted) 
+                .Where(item => !item.IsCompleted)
                 .OrderByDescending(item => item.DueDate)
                 .ToListAsync();
         }

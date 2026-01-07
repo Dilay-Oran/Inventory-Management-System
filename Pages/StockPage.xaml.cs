@@ -36,18 +36,23 @@ public partial class StockPage : ContentPage
 
     private async void SaveButton_OnClicked(object sender, EventArgs e)
     {
-        // seçilen product
-        var selectedProduct = ProductPicker.SelectedItem as ProductsItem;
 
-        // seçilen warehouse
-        var selectedWarehouse = Warehouse.SelectedItem as WarehouseItem;
+        if (ProductPicker.SelectedItem == null ||
+      Warehouse.SelectedItem == null ||
+      string.IsNullOrWhiteSpace(Quantity.Text))
+        {
+            await DisplayAlert("Error", "Please fill all fields", "OK");
+            return;
+        }
 
-        // quantity kontrolü
+        var selectedProduct = (ProductsItem)ProductPicker.SelectedItem;
+        var selectedWarehouse = (WarehouseItem)Warehouse.SelectedItem;
+
         bool isNumber = int.TryParse(Quantity.Text, out int quantity);
 
-        if (selectedProduct == null || selectedWarehouse == null || !isNumber)
+        if (!isNumber)
         {
-            await DisplayAlert("Error", "Please fill all fields correctly.", "OK");
+            await DisplayAlert("Error", "Quantity must be a number", "OK");
             return;
         }
 
@@ -60,6 +65,40 @@ public partial class StockPage : ContentPage
         Quantity.Text = string.Empty;
 
         await LoadStockList();
+        int quantityChange = quantity; // artýk eksi olabilir
+
+        // SADECE ARTIÞTA kapasite kontrolü
+        if (quantityChange > 0)
+        {
+            var currentTotal = await stockdb
+                .GetTotalStockInWarehouseAsync(selectedWarehouse.WarehouseDestination);
+
+            if (currentTotal + quantityChange > selectedWarehouse.WarehouseCapacity)
+            {
+                await DisplayAlert(
+                    "Capacity Error",
+                    "Warehouse capacity exceeded!",
+                    "OK");
+                return;
+            }
+        }
+
+        try
+        {
+            await stockdb.AddOrUpdateStockAsync(
+                selectedProduct.ProductsName,
+                selectedWarehouse.WarehouseDestination,
+                quantityChange
+            );
+
+            Quantity.Text = string.Empty;
+            await LoadStockList();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+        }
+
     }
     private async Task LoadStockList()
     {
@@ -74,4 +113,6 @@ public partial class StockPage : ContentPage
         await stockdb.DeleteAsync(item);
         await LoadStockList();
     }
+
+
 }
